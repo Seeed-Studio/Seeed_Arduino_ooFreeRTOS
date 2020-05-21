@@ -36,7 +36,7 @@
  *
  ***************************************************************************/
 
-#include <Seeed_Arduino_FreeRTOS.h>
+#include <Seeed_Arduino_ooFreeRTOS.h>
 #include "task.h"
 #include "thread.hpp"
 #include "ticks.hpp"
