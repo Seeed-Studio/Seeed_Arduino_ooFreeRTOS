@@ -36,20 +36,77 @@
  *
  ***************************************************************************/
 
+#include "message.hpp"
 
-#ifndef VERSION_CPP_WRAPPERS_HPP_
-#define VERSION_CPP_WRAPPERS_HPP_
+using namespace cpp_freertos;
 
-#define CPP_FREERTOS_NO_EXCEPTIONS
+Message::Message(UBaseType_t bufferSize)
+{
+    handle = xMessageBufferCreate(bufferSize);
 
-namespace cpp_freertos {
-
-#define CPP_WRAPPERS_VERSION_MAJOR      1
-#define CPP_WRAPPERS_VERSION_MINOR      5
-#define CPP_WRAPPERS_VERSION_RELEASE    0
-
-#define CPP_WRAPPERS_VERSION_STRING "1.5.0"
-
-}
+    if (handle == NULL)
+    {
+#ifndef CPP_FREERTOS_NO_EXCEPTIONS
+        throw MessageCreateException();
+#else
+        configASSERT(!"Queue Constructor Failed");
 #endif
+    }
+}
 
+Message::~Message()
+{
+    vMessageBufferDelete(handle);
+}
+
+size_t Message::Send(void *buff, size_t length, TickType_t Timeout)
+{
+    size_t xBytesSent;
+    xBytesSent = xMessageBufferSend(handle, (void *)buff, length, Timeout);
+    return xBytesSent;
+}
+
+size_t Message::Receive(void *buff, size_t length, TickType_t Timeout)
+{
+    size_t xReceivedBytes;
+    xReceivedBytes = xMessageBufferReceive(handle, (void *)buff, length, Timeout);
+    return xReceivedBytes;
+}
+
+size_t Message::SendFromISR(void *buff, size_t length, BaseType_t *pxHigherPriorityTaskWoken)
+{
+    size_t xBytesSent;
+    xBytesSent = xMessageBufferSendFromISR(handle, (void *)buff, length, pxHigherPriorityTaskWoken);
+    return xBytesSent;
+}
+
+size_t Message::ReceiveFromISR(void *buff, size_t length, BaseType_t *pxHigherPriorityTaskWoken)
+{
+    size_t xReceivedBytes;
+    xReceivedBytes = xMessageBufferReceiveFromISR(handle, (void *)buff, length, pxHigherPriorityTaskWoken);
+    return xReceivedBytes;
+}
+
+bool Message::IsEmpty()
+{
+    UBaseType_t cnt = xMessageBufferIsEmpty(handle);
+
+    return cnt == pdTRUE ? true : false;
+}
+
+bool Message::IsFull()
+{
+    UBaseType_t cnt = xMessageBufferIsFull(handle);
+
+    return cnt == pdTRUE ? true : false;
+}
+
+void Message::Flush()
+{
+    xMessageBufferReset(handle);
+}
+
+UBaseType_t Message::NumSpacesLeft()
+{
+    return xMessageBufferSpacesAvailable(handle);
+}
