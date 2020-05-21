@@ -39,7 +39,7 @@
 
 #ifndef TICK_HOOK_HPP_
 #define TICK_HOOK_HPP_
-
+#include "ooFreeRTOS_config.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include <list>

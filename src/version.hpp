@@ -39,9 +39,7 @@
 
 #ifndef VERSION_CPP_WRAPPERS_HPP_
 #define VERSION_CPP_WRAPPERS_HPP_
-
-#define CPP_FREERTOS_NO_EXCEPTIONS
-
+#include "ooFreeRTOS_config.h"
 namespace cpp_freertos {
 
 #define CPP_WRAPPERS_VERSION_MAJOR      1

@@ -40,7 +40,7 @@
 #ifndef TIMER_HPP_
 #define TIMER_HPP_
 
-
+#include "ooFreeRTOS_config.h"
 /**
  *  C++ exceptions are used by default when constructors fail.
  *  If you do not want this behavior, define the following in your makefile

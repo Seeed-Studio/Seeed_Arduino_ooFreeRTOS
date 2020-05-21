@@ -40,6 +40,7 @@
 #ifndef TICKS_HPP_
 #define TICKS_HPP_
 
+#include "ooFreeRTOS_config.h"
 #include "FreeRTOS.h"
 #include "task.h"
 

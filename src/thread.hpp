@@ -39,7 +39,7 @@
 
 #ifndef THREAD_HPP_
 #define THREAD_HPP_
-
+#include "ooFreeRTOS_config.h"
 /**
  *  The default in the C++ Wrapper classes is to use the C++ string class. 
  *  If you do not want this, define the following in your makefile or 

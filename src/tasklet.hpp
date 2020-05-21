@@ -39,7 +39,7 @@
 
 #ifndef TASKLET_HPP_
 #define TASKLET_HPP_
-
+#include "ooFreeRTOS_config.h"
 
 /**
  *  C++ exceptions are used by default when constructors fail.

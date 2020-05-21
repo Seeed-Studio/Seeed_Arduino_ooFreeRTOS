@@ -1,4 +1,4 @@
-# Seeed_Arduino_ooFreeRTOS  [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_Arduino_ooFreeRTOSr.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_Arduino_ooFreeRTOS)
+# Seeed_Arduino_ooFreeRTOS  [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_Arduino_ooFreeRTOS.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_Arduino_ooFreeRTOS)
 
 ## Introduction
 **Seeed_Arduino_ooFreeRTOS is fork from [freertos-addons](https://github.com/michaelbecker/freertos-addons).**

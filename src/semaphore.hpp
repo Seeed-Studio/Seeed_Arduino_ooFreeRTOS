@@ -47,6 +47,7 @@
  *  it's a fatal error. In the cases when you've defined this, the new 
  *  default behavior will be to issue a configASSERT() instead.
  */
+#include "ooFreeRTOS_config.h"
 #ifndef CPP_FREERTOS_NO_EXCEPTIONS
 #include <exception>
 #include <string>
