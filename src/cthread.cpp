@@ -201,19 +201,22 @@ Thread::~Thread()
 void Thread::TaskFunctionAdapter(void *pvParameters)
 {
     Thread *thread = static_cast<Thread *>(pvParameters);
-
+    
     thread->Run();
 
 #if (INCLUDE_vTaskDelete == 1)
 
     thread->Cleanup();
 
+    thread->ThreadStarted = false;
+    
     vTaskDelete(thread->handle);
 
 #else
     configASSERT( ! "Cannot return from a thread.run function "
                     "if INCLUDE_vTaskDelete is not defined.");
 #endif
+    thread->ThreadStarted = false;
 }
 
 
